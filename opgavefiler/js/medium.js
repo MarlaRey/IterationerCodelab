@@ -79,19 +79,14 @@ console.group("opgave 3");
 fetch('https://dummyjson.com/users')
   .then(response => response.json())
   .then(data => {
+    // Hent bruger nummer 25 fra data og vis nøgler og værdier for brugeren
+    const bruger25 = data.users[25];
+      visBrugerData(bruger25);
     // Når data er hentet, kalder vi callback-funktionen (opgave 2:)
     buildViewData(data.users);
     console.log(data.users);
+    
   });
- 
-//2 det er sådan man fetcher og opbevarer data i en variabel som man så kan arbejde videre med, først i det vi laver userData har vi daten i en håndgribeligt format:
-// function buildViewData(data) {
-//     // Gør noget med det hentede data her
-//     console.log(data);
-//     userData = data;
-// console.log(userData);
-
-//   }
 
 // Funktion til at bygge visningsdata og indsætte dem i div'en med id "opgave3"
 function buildViewData(data) {
@@ -146,28 +141,7 @@ function visBrugerData(bruger) {
     opgave4Element.appendChild(ul);
   }
   
-  // Hent bruger nummer 25 fra data og vis nøgler og værdier for brugeren
-  fetch('https://dummyjson.com/users')
-    .then(response => response.json())
-    .then(data => {
-      const bruger25 = data.users[25];
-      visBrugerData(bruger25);
-    })
-    .catch(error => {
-      console.error('Fejl ved hentning af data:', error);
-    });
   
-
-
-
-
-
-
-
-
-
-
-
 
 // support functions ---------------------------------------------------------------------------------------------
 
