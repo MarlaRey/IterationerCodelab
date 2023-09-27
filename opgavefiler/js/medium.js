@@ -81,6 +81,7 @@ fetch('https://dummyjson.com/users')
   .then(data => {
     // Når data er hentet, kalder vi callback-funktionen (opgave 2:)
     buildViewData(data.users);
+    console.log(data.users);
   });
  
 //2 det er sådan man fetcher og opbevarer data i en variabel som man så kan arbejde videre med, først i det vi laver userData har vi daten i en håndgribeligt format:
@@ -115,25 +116,47 @@ function buildViewData(data) {
     // Tilføj den oprettede liste (ul) til opgave3-elementet
     opgave3Element.appendChild(ul);
   }
+   
+
+console.groupEnd();
+
+//OPGAVE 4:
+
+// Funktion til at vise alle nøgler og værdier for en bruger i div'en med id "opgave4"
+function visBrugerData(bruger) {
+    // Få fat i det element i HTML, hvor du vil vise dataen
+    const opgave4Element = document.getElementById('opgave4');
   
-  // Udfør fetch-anmodningen og kald buildViewData med dataen som parameter
+    // Opret en HTML-liste (ul) for at vise nøgler og værdier
+    const ul = document.createElement('ul');
+  
+    // Gennemløb brugerobjektet med en for...in-løkke
+    for (let nøgle in bruger) {
+      const li = document.createElement('li');
+      // Opret en tekststreng med nøglen og dens værdi
+      li.textContent = `${nøgle}: ${bruger[nøgle]}`;
+      // Tilføj listeelementet til ul
+      ul.appendChild(li);
+    }
+  
+    // Tøm eventuelt tidligere indhold i opgave4-elementet
+    opgave4Element.innerHTML = '';
+  
+    // Tilføj den oprettede liste (ul) til opgave4-elementet
+    opgave4Element.appendChild(ul);
+  }
+  
+  // Hent bruger nummer 25 fra data og vis nøgler og værdier for brugeren
   fetch('https://dummyjson.com/users')
     .then(response => response.json())
     .then(data => {
-      // Når data er hentet, kalder vi buildViewData-funktionen
-      buildViewData(data.users);
+      const bruger25 = data.users[25];
+      visBrugerData(bruger25);
     })
     .catch(error => {
       console.error('Fejl ved hentning af data:', error);
     });
   
-
-  
-  
-
-console.groupEnd();
-
-
 
 
 
