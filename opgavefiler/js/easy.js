@@ -16,6 +16,7 @@ console.groupEnd();
 
 
 /* opgave 2 */
+
 console.group("opgave 2");
 // din kode her
 let liste2 = '';
